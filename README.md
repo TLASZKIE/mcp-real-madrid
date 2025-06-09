@@ -32,8 +32,8 @@ Use the following commands from the repository root:
 # start the Node server
 npm --prefix server start
 
-# start the React client
-npm --prefix client start
+# start the React client (Vite dev server)
+npm --prefix client run dev
 
 # start the MCP server
 npm --prefix mcp start
