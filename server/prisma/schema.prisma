@@ -1,0 +1,29 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Tag {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  players PlayerTag[]
+}
+
+model Player {
+  id   Int    @id @default(autoincrement())
+  name String
+  tags PlayerTag[]
+}
+
+model PlayerTag {
+  player   Player @relation(fields: [playerId], references: [id])
+  playerId Int
+  tag      Tag    @relation(fields: [tagId], references: [id])
+  tagId    Int
+
+  @@id([playerId, tagId])
+}
